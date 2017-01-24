@@ -1,12 +1,15 @@
-<div style="width: 50%; float: left">
-  <div>
-    {{textarea name="lyscript" rows=30 cols=75 autofocus=True required=True value=score.script}}
+<div class="row">
+  <div class="col-md">
+    <form>
+      <div class="form-group">
+        <label for="lilypondScript">Lilypond script:</label>
+        {{textarea class="form-control" id="lilypondScript" rows=30 autofocus=True required=True value=score.script}}
+      </div>
+    </form>
   </div>
-</div>
 
-<div style="width: 50%; float: left">
-  <div>
-    <button type="submit" onclick={{action 'engrave'}}>Engrave</button>
+  <div class="col-md">
+    <button type="submit" class="btn btn-primary btn-sm" onclick={{action 'engrave'}}>Engrave</button>
+    <img src="{{imageUrl}}" style="max-width: 100%">
   </div>
-  <img src="{{imageUrl}}" style="max-width: 100%">
 </div>
