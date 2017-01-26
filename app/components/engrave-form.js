@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   actions: {
     engrave: function(event){
       $('body').addClass('wait');
-      let url = 'http://lilypond-api.herokuapp.com/scores/';
+      let url = 'https://lilypond-api.herokuapp.com/scores/';
       let options = {
         contentType: 'text/plain',
         dataType: 'json',
