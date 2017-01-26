@@ -2,25 +2,27 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
-  imageUrl: '',
+  imageUrl: null,
   actions: {
     engrave: function(event){
-      $('body').addClass('wait');
+      Ember.$('body').addClass('wait');
       let url = 'https://lilypond-api.herokuapp.com/scores/';
       let options = {
+        method: 'POST',
         contentType: 'text/plain',
         dataType: 'json',
         data: this.get('score').script,
       };
 
-      this.get('ajax').post(url, options)
-        .then(response => {
+      this.get('ajax').raw(url, options)
+        .then(({ response }) => {
           this.set('imageUrl', response.image.url);
-          $('body').removeClass('wait');
+          Ember.$('body').removeClass('wait');
         })
-        .catch(({ response }) => {
+        .catch(({ response, jqXHR }) => {
           console.log(response);
-          $('body').removeClass('wait');
+          console.log(jqXHR);
+          Ember.$('body').removeClass('wait');
         });
     }
   }
