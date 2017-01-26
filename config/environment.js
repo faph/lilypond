@@ -43,7 +43,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = '/lilypond-wui/';
+    ENV.rootURL = '/lilypond/';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
