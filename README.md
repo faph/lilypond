@@ -1,52 +1,15 @@
-# lilypond-wui
+LilyPond Music Engraving
+========================
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Web application to generate musical scores using [LilyPond](http://lilypond.org).
 
-## Prerequisites
+Architecture
+------------
 
-You will need the following things properly installed on your computer.
+1.  [Ember](http://emberjs.com) JavaScript web application running on 
+    [GitHub Pages](https://pages.github.com).
+2.  [Django Rest Framework](http://www.django-rest-framework.org) Python web API 
+    running on [Heroku](https://heroku.com). Uses two buildpacks:
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Bower](https://bower.io/)
-* [Ember CLI](https://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
-
-## Installation
-
-* `git clone <repository-url>` this repository
-* `cd lilypond-wui`
-* `npm install`
-* `bower install`
-
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+  	-   [Python/Conda](https://github.com/faph/conda-pip-buildpack)
+  	-   [LilyPond](https://github.com/faph/heroku-buildpack-LilyPond/tree/fix-install-path)
