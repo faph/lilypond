@@ -2,10 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
-  imageUrl: null,
+  imageUrl: '',
+  statusText: '',
   actions: {
     engrave: function(event){
-      Ember.$('body').addClass('wait');
+      this.set('statusText', 'In progress...');
       let url = 'https://lilypond-api.herokuapp.com/scores/';
       let options = {
         method: 'POST',
@@ -17,12 +18,10 @@ export default Ember.Component.extend({
       this.get('ajax').raw(url, options)
         .then(({ response }) => {
           this.set('imageUrl', response.image.url);
-          Ember.$('body').removeClass('wait');
+          this.set('statusText', '');
         })
         .catch(({ response, jqXHR }) => {
-          console.log(response);
-          console.log(jqXHR);
-          Ember.$('body').removeClass('wait');
+          this.set('statusText', jqXHR.responseJSON.detail);
         });
     }
   }

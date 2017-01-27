@@ -1,9 +1,3 @@
-body.wait *, 
-body.wait 
-{
-  cursor: progress !important;
-}
-
 .row {
   margin-top: 1rem;
 }
@@ -11,4 +5,8 @@ body.wait
 #lilypondScript {
   font-family: Consolas, monospace;
   font-size: 0.8rem;
+}
+
+#statusText {
+  white-space: pre-wrap;
 }
