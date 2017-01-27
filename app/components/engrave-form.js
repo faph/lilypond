@@ -1,12 +1,16 @@
 import Ember from 'ember';
+import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(KeyboardShortcuts, {
   ajax: Ember.inject.service(),
+
   imageUrl: '',
-  statusText: '',
+  progressText: '',
+  errorText: '',
+
   actions: {
     engrave: function(event){
-      this.set('statusText', 'In progress...');
+      this.set('progressText', 'in progress...');
       let url = 'https://lilypond-api.herokuapp.com/scores/';
       let options = {
         method: 'POST',
@@ -18,11 +22,18 @@ export default Ember.Component.extend({
       this.get('ajax').raw(url, options)
         .then(({ response }) => {
           this.set('imageUrl', response.image.url);
-          this.set('statusText', '');
+          this.set('progressText', '');
+          this.set('errorText', '');
         })
         .catch(({ response, jqXHR }) => {
-          this.set('statusText', jqXHR.responseJSON.detail);
+          this.set('progressText', 'an error occurred');
+          this.set('errorText', jqXHR.responseJSON.detail);
         });
     }
+  },
+
+  keyboardShortcuts: {
+    'ctrl+s' : 'engrave'
   }
+
 });

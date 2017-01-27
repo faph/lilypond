@@ -9,8 +9,8 @@
   </div>
 
   <div class="col-md">
-    <button type="submit" class="btn btn-primary btn-sm" onclick={{action 'engrave'}}>Engrave</button>
-    <p id="statusText">{{statusText}}</p>
+    <button type="submit" class="btn btn-primary btn-sm" onclick={{action 'engrave'}}>Engrave (Ctrl-S)</button><span id="progressText">{{progressText}}</span>
+    <p id="errorText">{{errorText}}</p>
     <img src="{{imageUrl}}" style="max-width: 100%">
   </div>
 </div>

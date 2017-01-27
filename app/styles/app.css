@@ -7,6 +7,10 @@
   font-size: 0.8rem;
 }
 
-#statusText {
+#progressText {
+  margin-left: 1rem;
+}
+
+#errorText {
   white-space: pre-wrap;
 }
