@@ -4,7 +4,6 @@ import KeyboardShortcuts from 'ember-keyboard-shortcuts/mixins/component';
 export default Ember.Component.extend(KeyboardShortcuts, {
   ajax: Ember.inject.service(),
 
-  imageUrl: '',
   progressText: '',
   errorText: '',
 
@@ -16,12 +15,12 @@ export default Ember.Component.extend(KeyboardShortcuts, {
         method: 'POST',
         contentType: 'text/plain',
         dataType: 'json',
-        data: this.get('score').script,
+        data: this.get('score').get('script'),
       };
-
+      
       this.get('ajax').raw(url, options)
         .then(({ response }) => {
-          this.set('imageUrl', response.image.url);
+          this.get('score').set('imageUrl', response.image.url);
           this.set('progressText', '');
           this.set('errorText', '');
         })
@@ -29,6 +28,7 @@ export default Ember.Component.extend(KeyboardShortcuts, {
           this.set('progressText', 'an error occurred');
           this.set('errorText', jqXHR.responseJSON.detail);
         });
+      
     }
   },
 
