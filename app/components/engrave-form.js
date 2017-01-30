@@ -10,17 +10,21 @@ export default Ember.Component.extend(KeyboardShortcuts, {
   actions: {
     engrave: function(event){
       this.set('progressText', 'in progress...');
+      
+      let score = this.get('score');
       let url = 'https://lilypond-api.herokuapp.com/scores/';
       let options = {
         method: 'POST',
         contentType: 'text/plain',
         dataType: 'json',
-        data: this.get('score').get('script'),
+        data: score.get('script'),
       };
       
       this.get('ajax').raw(url, options)
         .then(({ response }) => {
-          this.get('score').set('imageUrl', response.image.url);
+          score.set('imageUrl', response.image.url);
+          score.save();
+          
           this.set('progressText', '');
           this.set('errorText', '');
         })

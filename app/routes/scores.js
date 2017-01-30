@@ -4,9 +4,17 @@ let defaultScript = "\\new PianoStaff \\relative c' <<\n  \\new Staff {\n    \\k
 
 export default Ember.Route.extend({
 	model() {
-    return this.get('store').createRecord('score', {
-      script: defaultScript,
-      imageUrl: ''
-    });
+    let store = this.get('store');
+
+    return store.findAll('score')
+      .then(function(scores) {
+        return scores.objectAt(0);
+      })
+      .catch(function(error) {
+        return store.createRecord('score', {
+          script: defaultScript,
+          imageUrl: ''
+        });
+      });
   }
 });
