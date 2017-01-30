@@ -6,15 +6,15 @@ export default Ember.Route.extend({
 	model() {
     let store = this.get('store');
 
-    return store.findAll('score')
-      .then(function(scores) {
+    return store.findAll('score').then(function(scores) {
+      if (scores.get('length') > 0) {
         return scores.objectAt(0);
-      })
-      .catch(function(error) {
+      } else {
         return store.createRecord('score', {
           script: defaultScript,
           imageUrl: ''
         });
-      });
+      }
+    });
   }
 });
