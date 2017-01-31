@@ -1,7 +1,7 @@
-LilyPond Music Engraving
-========================
+LilyPond Editor
+===============
 
-Web application to generate musical scores using [LilyPond](http://lilypond.org).
+Web application to engrave or write musical scores using [LilyPond](http://lilypond.org).
 
 Architecture
 ------------
