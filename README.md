@@ -13,3 +13,8 @@ Architecture
 
   	-   [Python/Conda](https://github.com/faph/conda-pip-buildpack)
   	-   [LilyPond](https://github.com/faph/heroku-buildpack-LilyPond/tree/fix-install-path)
+
+Terms & Conditions
+------------------
+
+LilyPond Editor is licensed under the [GNU General Public License](LICENSE).
