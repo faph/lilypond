@@ -32,7 +32,6 @@ export default Ember.Component.extend(KeyboardShortcuts, {
           this.set('progressText', 'an error occurred');
           this.set('errorText', jqXHR.responseJSON.detail);
         });
-      
     }
   },
 

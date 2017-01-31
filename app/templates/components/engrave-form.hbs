@@ -1,11 +1,12 @@
 <div class="row">
   <div class="col-md">
-    <form>
-      <div class="form-group">
-        <label for="lilypondScript">Lilypond script:</label>
-        {{textarea class="form-control" id="lilypondScript" rows=28 autofocus=True required=True value=score.script}}
-      </div>
-    </form>
+    {{
+      ember-ace
+      value=score.script
+      update=(action (mut score.script))
+      lines=32
+      showPrintMargin=false
+    }}
   </div>
 
   <div class="col-md">
